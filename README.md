@@ -1,10 +1,11 @@
 # Yolov5 object detection model deployment using flask
-This repo contains example apps for exposing the [yolo5](https://github.com/ultralytics/yolov5) object detection model from [pytorch hub](https://pytorch.org/hub/ultralytics_yolov5/) via a [flask](https://flask.palletsprojects.com/en/1.1.x/) api/app.
+flask api/app을 통해 파이토치 허브에서 yolov5 개체 감지 모델을 위한 앱 
 
 ## Web app
-Simple app consisting of a form where you can upload an image, and see the inference result of the model in the browser. Run:
 
-`$ python3 webapp.py --port 5000`
+이미지를 업도르하고 브라우저에서 모델의 추론 결과를 볼 수 있는 간단한 앱
+실행시키는 방법:
+`$ python webapp.py --port 5000`
 
 then visit [http://localhost:5000/](http://localhost:5000/) in your browser:
 
@@ -21,13 +22,7 @@ Processed images are saved in the `static` directory with a datetime for the fil
 ## Rest API
 Simple rest API exposing the model for consumption by another service. Run:
 
-`$ python3 restapi.py --port 5000 --model yolov5s`
-
-Then use [curl](https://curl.se/) to perform a request:
-
-`$ curl -X POST -F image=@tests/zidane.jpg 'http://localhost:5000/v1/object-detection/yolov5'`
-
-The model inference results are returned:
+모델추론 결과 반환:
 
 ```
 [{'class': 0,
@@ -53,14 +48,11 @@ The model inference results are returned:
   'ymin': 429.2020568848}]
 ```
 
-## Run & Develop locally
+## 실행방법
 Run locally for dev, requirements mostly originate from [yolov5](https://github.com/ultralytics/yolov5/blob/master/requirements.txt):
-* `python3 -m venv venv`
-* `source venv/bin/activate`
-* `(venv) $ pip install -r requirements.txt`
-* `(venv) $ python3 restapi.py --port 5000`
 
-An example python script to perform inference using [requests](https://docs.python-requests.org/en/master/) is given in `tests/test_request.py`
+* `(venv) $ pip install -r requirements.txt`
+* `(venv) $ python restapi.py --port 5000`
 
 ## Docker
 The example dockerfile shows how to expose the rest API:
