@@ -9,11 +9,11 @@ Simple app consisting of a form where you can upload an image, and see the infer
 then visit [http://localhost:5000/](http://localhost:5000/) in your browser:
 
 <p align="center">
-<img src="pda_front.jpg" width="450">
+<img src="docs/pda_front.jpg" width="450">
 </p>
 
 <p align="center">
-<img src="pda_result.png" width="450">
+<img src="docs/pda_result.png" width="450">
 </p>
 
 Processed images are saved in the `static` directory with a datetime for the filename.
