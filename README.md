@@ -13,14 +13,15 @@ then visit [http://localhost:5000/](http://localhost:5000/) in your browser:
 <p align="center">
 <img src="docs/pda_front.jpg" width="450">
 </p>
-
 <p align="center">
 <img src="docs/pda_result.png" width="450">
 </p>
 <p align="center">
 <img src="docs/lots.jpg" width="450">
 </p>
-
+<p align="center">
+<img src="docs/video.jpg" width="450">
+</p>
 
 ## Rest API
 Simple rest API exposing the model for consumption by another service. Run:
