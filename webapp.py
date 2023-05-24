@@ -40,7 +40,7 @@ def process_video(video_path):
             cv2.rectangle(frame, (int(x1), int(y1)), (int(x2), int(y2)), (255, 0, 0), 2)
             cv2.putText(frame, f"{results.names[int(cls)]} {conf:.2f}", (int(x1), int(y1) - 10),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0), 2)
-
+        frame = cv2.rotate(frame, cv2.ROTATE_90_CLOCKWISE)  # 출력 영상을 시계 방향으로 90도 회전
         frames[i] = frame
 
     # Save the processed frames as a new video
