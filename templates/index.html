@@ -21,10 +21,12 @@
     <title>yolov5 object detection</title>
   </head>
   <body class="text-center">
-    <form class="form-signin" method=post enctype=multipart/form-data>
+    <form class="form-signin" method="post" enctype="multipart/form-data">
         <img class="mb-4" src="/static/pda.png" alt="" width="72">
         <h1 class="h3 mb-3 font-weight-normal">HomeCCTV Guardian</h1>
         <input type="file" name="file" class="form-control-file" id="inputfile">
+        <br/>
+        <video id="uploaded-video" controls></video>
         <br/>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Upload</button>
         <p class="mt-5 mb-3 text-muted">jaewon flask server image upload</p>
@@ -34,17 +36,27 @@
     <script src="//stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <script type="text/javascript">
       $('#inputfile').bind('change', function() {
-          let fileSize = this.files[0].size/1024/1024; // this gives in MB
-          if (fileSize > 1) {
+  let fileSize = this.files[0].size / 1024 / 1024; // file size in MB
+  let maxSizeMB = 50; // maximum file size in MB
+
+  if (fileSize > maxSizeMB) {
+    $("#inputfile").val(null);
+    alert('File is too big. Only files less than ' + maxSizeMB + 'MB are allowed.');
+    return;
+  }
+
+          let file = this.files[0];
+          let ext = file.name.split('.').pop().toLowerCase();
+          if ($.inArray(ext, ['jpg', 'jpeg', 'mp4', 'mov']) === -1) {
             $("#inputfile").val(null);
-            alert('file is too big. images more than 1MB are not allowed')
-            return
+            alert('Only JPEG, JPG, MP4, and MOV files are allowed!');
+            return;
           }
 
-          let ext = $('#inputfile').val().split('.').pop().toLowerCase();
-          if($.inArray(ext, ['jpg','jpeg']) == -1) {
-            $("#inputfile").val(null);
-            alert('only jpeg/jpg files are allowed!');
+          // Check if the uploaded file is a video
+          if (file.type.startsWith('video')) {
+            let videoURL = URL.createObjectURL(file);
+            $('#uploaded-video').attr('src', videoURL);
           }
       });
     </script>
