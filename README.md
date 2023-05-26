@@ -7,6 +7,7 @@ flask api/app을 통해 파이토치 허브에서 yolov5 개체 감지 모델
 실행시키는 방법:
 ```
 `$ python webapp.py --port 5000`
+`$ python webapp.py `
 ```
 then visit [http://localhost:5000/](http://localhost:5000/) in your browser:
 ## 메인화면 ,이미지와 비디오 객체탐지
